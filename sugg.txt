@@ -1,0 +1,56 @@
+// 生成随机的IV
+byte iv[AES::BLOCKSIZE];
+OS_GenerateRandomBlock(false, iv, AES::BLOCKSIZE);
+
+// 设置密钥和IV
+SecByteBlock key(AES::DEFAULT_KEYLENGTH);
+memcpy(key, password.c_str(), AES::DEFAULT_KEYLENGTH);
+CBC_Mode<AES>::Encryption encryption;
+encryption.SetKeyWithIV(key, key.size(), iv);
+
+
+
+
+
+
+
+
+
+
+
+
+// 解密
+std::string decryptedtext;
+
+StringSource(ciphertext, true,
+    new StreamTransformationFilter(decryption, new StringSink(decryptedtext)));
+
+// 将解密后的明文写入输出文件
+std::ofstream ofs(outputFile, std::ios::binary);
+if (ofs)
+{
+    ofs.write(decryptedtext.data(), decryptedtext.size());
+    ofs.close();
+}
+else
+{
+    std::cerr << "无法打开输出文件" << std::endl;
+    return;
+}
+
+
+
+
+在第2部分中，你可以将生成随机IV的代码放在初始化加密器之前。然后，在调用SetKeyWithIV()函数设置IV之前。
+
+在第4部分中，解密后的明文写入输出文件的代码可以放在解密操作完成后。确保在解密和写入文件之间没有其他操作。
+
+请根据以下建议将代码放置在适当的行数：
+
+在第2部分中：
+
+生成随机IV的代码可以放在密钥初始化的下面（大约在第39行）。
+SetKeyWithIV()函数设置IV的代码可以放在密钥初始化的下面（大约在第44行）。
+在第4部分中：
+
+解密后的明文写入输出文件的代码可以放在解密操作完成的下面（大约在第75行）。
