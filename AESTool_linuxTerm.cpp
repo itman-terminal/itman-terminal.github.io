@@ -1,5 +1,5 @@
 /*注意
-此代码由ai生成
+此代码由ai生成，日志高亮仅linux Terminal支持
 不保证完全能用*/
 
 #include <iostream>
