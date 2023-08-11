@@ -1,3 +1,7 @@
+/*注意
+此代码由ai生成
+不保证完全能用*/
+
 #include <iostream>
 #include <fstream>
 #include <cstring>
