@@ -14,10 +14,21 @@
   </body>
   
   <head>
-    <title>reCAPTCHA demo: Simple page</title>
     <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
   </head>
   <body>
    <script src='//recaptcha.net/recaptcha/api.js'></script>
     <div class="g-recaptcha" data-sitekey="6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy"></div>
-</html>
+    
+  
+  var responseToken = grecaptcha.getResponse(widgetId);
+if (responseToken.length == 0) {
+    alert("验证失败");
+} else {
+    alert("验证通过");
+    
+    <meta http-equiv="refresh" content="0; url=https://itman-terminal.github.io/CAPTCHA.html" />
+}
+  
+  
+  </html>
