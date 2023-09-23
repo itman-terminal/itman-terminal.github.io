@@ -27,8 +27,10 @@
       function getResponseFromRecaptcha() {
         var responseToken = grecaptcha.getResponse(widgetId);
         if (responseToken.length == 0) {
+          //验证失败的操作
           alert("Validation failed");
         } else {
+          //成功后的操作
           alert("Validation passed");
           // Add your code to handle the successful validation here
         }
