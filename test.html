@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+    <script src="aka.js"></script> <!-- Include the JavaScript file -->
+  </head>
+  <body>
+    <div id="robot"></div> <!-- Create a container for the reCAPTCHA -->
+    <button onclick="getResponseFromRecaptcha()">Submit</button> <!-- Add a button to trigger the validation -->
+
+    <!-- Add your JavaScript code -->
+    <script>
+      var widgetId;
+      var onloadCallback = function () {
+        widgetId = grecaptcha.render('robot', {
+          'sitekey': '6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy',
+          'theme': 'light',
+          'size': 'compact',
+          'callback': callback,
+          'expired-callback': expiredCallback,
+          'error-callback': errorCallback
+        });
+      };
+
+      function getResponseFromRecaptcha() {
+        var responseToken = grecaptcha.getResponse(widgetId);
+        if (responseToken.length == 0) {
+          alert("Validation failed");
+        } else {
+          alert("Validation passed");
+          // Add your code to handle the successful validation here
+        }
+      }
+    </script>
+  </body>
+</html>
