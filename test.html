@@ -2,56 +2,16 @@
 
     <metaname="viewport"content="width=device-width,initial-scale=1.0"/>
     <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
-        
-        <script>
-        var recaptchaLoaded = false;
-
-        // 定义一个函数来检查reCAPTCHA是否加载完毕
-        function checkRecaptchaLoaded() {
-            if (typeof grecaptcha !== 'undefined') {
-                // reCAPTCHA已经加载完毕
-                recaptchaLoaded = true;
-            } else {
-                // reCAPTCHA还未加载完毕
-                setTimeout(checkRecaptchaLoaded, 100);
-            }
-        }
-
-        // 调用函数来检查reCAPTCHA加载状态
-        checkRecaptchaLoaded();
-
-        // 在页面加载完成后执行一些操作
-        window.onload = function () {
-            // 检查reCAPTCHA是否加载完毕
-            if (!recaptchaLoaded) {
-                // reCAPTCHA还未加载完毕，显示全屏加载动画
-                var loadingAnimation = document.createElement('img');
-                loadingAnimation.src = 'https://itman-terminal.github.io/loading.GIF';
-                loadingAnimation.style.position = 'fixed';
-                loadingAnimation.style.top = '0';
-                loadingAnimation.style.left = '0';
-                loadingAnimation.style.width = '100%';
-                loadingAnimation.style.height = '100%';
-                document.body.appendChild(loadingAnimation);
-            } else {
-                // reCAPTCHA已经加载完毕
-                // 在这里执行其他操作
-            }
-        };
-    </script>
-</head>
-<body>
-    <!-- 在这里放置reCAPTCHA组件 -->
-
+ 
     <a href="https://itman-terminal.github.io/test.html">Refresh</a>
-  <head>
+  
     <br>
 
 
        <div class="g-recaptcha" data-sitekey="6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy"></div>
     <script src="//itman-terminal.github.io/aka.js"></script> <!-- Include the JavaScript file -->
-  </head>
-  <body>
+  
+  
     <div id="robot"></div> <!-- Create a container for the reCAPTCHA -->
     <button onclick="getResponseFromRecaptcha()">Submit</button> <!-- Add a button to trigger the validation -->
 
@@ -81,7 +41,6 @@
         }
       }
     </script>
-</body>
 
     
 
