@@ -27,6 +27,13 @@
           'error-callback': errorCallback
         });
       };
+ var loadingScreen = document.getElementById("loadingScreen");
+
+// 检查loadingScreen是否存在
+if(loadingScreen) {
+    // 从文档中删除loadingScreen元素
+    loadingScreen.remove();
+}
 
       
         var responseToken = grecaptcha.getResponse(widgetId);
