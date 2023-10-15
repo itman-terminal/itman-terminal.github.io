@@ -12,45 +12,33 @@
     
       
         <script>
-            var widgetId;
+          var widgetId;
           
-            var onloadCallback = function () {
-                document.getElementById('loadingScreen').style.display = 'none'; // 隐藏 loadingScreen
-              
-                widgetId = grecaptcha.render('recaptchaContainer', {
-                    'sitekey': '6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy',
-                    'theme': 'light',
-                    'size': 'compact',
-                    
-          'callback': callback,
-          'expired-callback': expiredCallback,
-          'error-callback': errorCallback
-        });
-      };
- var loadingScreen = document.getElementById("loadingScreen");
-
-// 检查loadingScreen是否存在
-if(loadingScreen) {
-    // 从文档中删除loadingScreen元素
-    loadingScreen.remove();
-}
-
-      
-        var responseToken = grecaptcha.getResponse(widgetId);
-        if (responseToken.length == 0) {
-          //验证失败的操作
-        
-        } else {
-          //成功后的操作
+          var onloadCallback = function () {
+            widgetId = grecaptcha.render('recaptchaContainer', {
+              'sitekey': '6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy',
+              'theme': 'light',
+              'size': 'compact',
+              'callback': callback,
+              'expired-callback': expiredCallback,
+              'error-callback': errorCallback
+            });
             
-          alert("Validation passed");
-            window.location.href="https://itman-terminal.github.io/test_final.html"; 
-          // Add your code to handle the successful validation here
-        }
-      }
-    </script>
+            var loadingScreen = document.getElementById("loadingScreen");
+            if (loadingScreen) {
+              loadingScreen.style.display = 'none'; // 隐藏 loadingScreen
+            }
+          };
 
-    
+          var responseToken = grecaptcha.getResponse(widgetId);
+          if (responseToken.length == 0) {
+            // 验证失败的操作
+          } else {
+            // 成功后的操作
+            alert("Validation passed");
+            window.location.href = "https://itman-terminal.github.io/test_final.html";
+            // Add your code to handle
+
 
 
 
