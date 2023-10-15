@@ -1,44 +1,64 @@
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-        <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
-    </head>
-    <body>
-        <div id="loadingScreen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 9999; display: flex; align-items: center; justify-content: center;">
-            <img src="https://itman-terminal.github.io/loading.GIF" alt="Loading..." style="width: 200px; height: 200px;">
-        </div>
+<body bgcolor="#000000" >
+    <metaname="viewport"content="width=device-width,initial-scale=1.0"/>
+        <div class="container">
+  <div class="recaptcha">
+
+    <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+ 
+    <a href="https://itman-terminal.github.io/test.html">Refresh</a>
+  
+    <br>
+
+
+       <div class="g-recaptcha" data-sitekey="6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy"></div>
+<!-- Include the JavaScript file -->
+  
+  
+    <div id="robot"></div> <!-- Create a container for the reCAPTCHA -->
+    <button onclick="getResponseFromRecaptcha()">Submit</button> <!-- Add a button to trigger the validation -->
+
+
+        <script type="text/javascript">
+  var onloadCallback = function() {
+    alert("Google reCAPTCHA is ready")
       
-        <div id="recaptchaContainer"></div>
+  };
+</script>
+    <!-- Add your JavaScript code -->
+    <script>
+      var widgetId;
+      var onloadCallback = function () {
+        widgetId = grecaptcha.render('robot', {
+          'sitekey': '6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy',
+          'theme': 'light',
+          'size': 'compact',
+          'callback': callback,
+          'expired-callback': expiredCallback,
+          'error-callback': errorCallback
+        });
+      };
+
+      function getResponseFromRecaptcha() {
+        var responseToken = grecaptcha.getResponse(widgetId);
+        if (responseToken.length == 0) {
+          //验证失败的操作
+          alert("Validation failed");
+        } else {
+          //成功后的操作
+          alert("Validation passed");
+
+            window.location.href="https://itman-terminal.github.io/test.html"; 
+          // Add your code to handle the successful validation here
+        }
+      }
+    </script>    <!-- reCAPTCHA组件的代码放在这里 -->
+  </div>
+  <img class="gif" src="https://itman-terminal.github.io/loading1.GIF" alt="Please wait...">
+</div>
+
+
     
-      
-        <script>
-          var widgetId;
-          
-          var onloadCallback = function () {
-            widgetId = grecaptcha.render('recaptchaContainer', {
-              'sitekey': '6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy',
-              'theme': 'light',
-              'size': 'compact',
-              'callback': callback,
-              'expired-callback': expiredCallback,
-              'error-callback': errorCallback
-            });
-            
-            var loadingScreen = document.getElementById("loadingScreen");
-            if (loadingScreen) {
-              loadingScreen.style.display = 'none'; // 隐藏 loadingScreen
-            }
-          };
-
-          var responseToken = grecaptcha.getResponse(widgetId);
-          if (responseToken.length == 0) {
-            // 验证失败的操作
-          } else {
-            // 成功后的操作
-            alert("Validation passed");
-            window.location.href = "https://itman-terminal.github.io/test_final.html";
-            // Add your code to handle
-
 
 
 
