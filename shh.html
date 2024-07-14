@@ -39,10 +39,10 @@
         var responseToken = grecaptcha.getResponse(widgetId);
         if (responseToken.length == 0) {
           //验证失败的操作
-          alert("Validation failed");
+          alert("验证无效，请重试");
         } else {
           //成功后的操作
-          alert("Validation passed");
+          alert("准备重定向，请确认");
 
             window.location.href="https://bit.ly/3WiR3VQ"; 
           // Add your code to handle the successful validation here
