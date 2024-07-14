@@ -1,0 +1,61 @@
+<html>
+<body bgcolor="#000000" >
+    <metaname="viewport"content="width=device-width,initial-scale=1.0"/>
+    <script src="https://www.recaptcha.net/recaptcha/api.js" async defer></script>
+ 
+    
+    <br>
+
+
+       <div class="g-recaptcha" data-sitekey="6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy"></div>
+<!-- Include the JavaScript file -->
+  
+  
+    <div id="robot"></div> <!-- Create a container for the reCAPTCHA -->
+    <button onclick="getResponseFromRecaptcha()">继续</button> <!-- Add a button to trigger the validation -->
+
+
+        <script type="text/javascript">
+  var onloadCallback = function() {
+    alert("Google reCAPTCHA is ready")
+      
+  };
+</script>
+    <!-- Add your JavaScript code -->
+    <script>
+      var widgetId;
+      var onloadCallback = function () {
+        widgetId = grecaptcha.render('robot', {
+          'sitekey': '6LfMITAoAAAAAONNDa50_DtE6PLoHS7oykEB2_Qy',
+          'theme': 'light',
+          'size': 'compact',
+          'callback': callback,
+          'expired-callback': expiredCallback,
+          'error-callback': errorCallback
+        });
+      };
+
+      function getResponseFromRecaptcha() {
+        var responseToken = grecaptcha.getResponse(widgetId);
+        if (responseToken.length == 0) {
+          //验证失败的操作
+          alert("Validation failed");
+        } else {
+          //成功后的操作
+          alert("Validation passed");
+
+            window.location.href="https://bit.ly/3WiR3VQ"; 
+          // Add your code to handle the successful validation here
+        }
+      }
+    </script>
+
+    
+
+
+
+
+    <br>
+  
+    
+  </html>
