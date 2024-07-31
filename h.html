@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reCAPTCHA v3 Demo</title>
+    <script src="https://recaptcha.net/recaptcha/api.js?render=6LdQatYoAAAAAKh40dGK4oaa1uwvLIMROflBGvIL"></script>
+</head>
+<body>
+    <h1>reCAPTCHA v3 Demo</h1>
+    <button id="getScoreButton">获取 reCAPTCHA 得分</button>
+    <div id="scoreDisplay"></div> <!-- 用于显示得分 -->
+
+    <script>
+        document.getElementById('getScoreButton').addEventListener('click', function() {
+            grecaptcha.execute('6LdQatYoAAAAAKh40dGK4oaa1uwvLIMROflBGvIL', {action: 'submit'}).then(function(token) {
+                // 这里可以直接显示得分
+                // 注意：此处的得分是通过 token 验证的，实际得分需要服务器端验证
+                // 由于没有服务器端，无法获取真实得分
+                // 这里仅为演示，实际得分需要通过服务器端验证
+                document.getElementById('scoreDisplay').innerText = '获取的 token: ' + token;
+                // 你可以在这里显示得分，但请注意这不是实际得分
+                // 例如：document.getElementById('scoreDisplay').innerText = '得分: ' + simulatedScore;
+            });
+        });
+    </script>
+</body>
+</html>
