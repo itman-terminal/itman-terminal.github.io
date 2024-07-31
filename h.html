@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reCAPTCHA v3 Demo</title>
-    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+    <script src="https://recaptcha.net/recaptcha/api.js?render=6LdQatYoAAAAAKh40dGK4oaa1uwvLIMROflBGvIL"></script>
     <style>
+      
         #loadingSpinner {
             display: none; /* 初始状态为隐藏 */
             width: 16px;
@@ -49,7 +50,7 @@
             document.getElementById('loadingSpinner').style.display = 'block';
 
             // 获取 reCAPTCHA token
-            grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
+            grecaptcha.execute('6LdQatYoAAAAAKh40dGK4oaa1uwvLIMROflBGvIL', {action: 'submit'}).then(function(token) {
                 // 发送 token 到 Cloudflare Workers 进行验证
                 fetch('https://recaptchafunctions.itman-terminal.workers.dev/verify', {
                     method: 'POST',
