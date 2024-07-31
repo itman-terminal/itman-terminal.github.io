@@ -4,20 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>reCAPTCHA v3 Demo</title>
-    <script src="https://recaptcha.net/recaptcha/api.js?render=6LdQatYoAAAAAKh40dGK4oaa1uwvLIMROflBGvIL"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY"></script>
+    <style>
+        #loadingSpinner {
+            display: none; /* 初始状态为隐藏 */
+            width: 16px;
+            height: 16px;
+        }
+    </style>
 </head>
 <body>
     <h1>reCAPTCHA v3 Demo</h1>
-    This page use <a href=https://workers.cloudflare.com/>CloudFlare Workers</a> as end point
-    <br>
-    
     <button id="getScoreButton">获取 reCAPTCHA 得分</button>
     <div id="scoreDisplay"></div> <!-- 用于显示得分 -->
+    <div id="loadingSpinner">
+        <svg version="1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+            <style>
+                @keyframes rotate {
+                    0% { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                @keyframes fillunfill {
+                    0% { stroke-dashoffset: 32.3; }
+                    50% { stroke-dashoffset: 0; }
+                    to { stroke-dashoffset: -31.9; }
+                }
+                @keyframes rot {
+                    0% { transform: rotate(0deg); }
+                    to { transform: rotate(-360deg); }
+                }
+                @keyframes colors {
+                    0%, to { stroke: #4285f4; }
+                }
+            </style>
+            <g style="animation-duration: 1568.63ms; animation-iteration-count: infinite; animation-name: rotate; animation-timing-function: linear; transform-origin: 50% 50%; width: 16px; height: 16px">
+                <path fill="none" d="M8 1.125A6.875 6.875 0 1 1 1.125 8" stroke-width="2.25" stroke-linecap="round" style="animation-duration: 1333ms, 5332ms, 5332ms; animation-fill-mode: forwards; animation-iteration-count: infinite, infinite, infinite; animation-name: fillunfill, rot, colors; animation-play-state: running, running, running; animation-timing-function: cubic-bezier(.4, 0, .2, 1), steps(4), linear; transform-origin: 50% 50%" stroke-dasharray="32.4" stroke-dashoffset="32.4"/>
+            </g>
+        </svg>
+    </div>
 
     <script>
         document.getElementById('getScoreButton').addEventListener('click', function() {
+            // 显示加载动画
+            document.getElementById('loadingSpinner').style.display = 'block';
+
             // 获取 reCAPTCHA token
-            grecaptcha.execute('6LdQatYoAAAAAKh40dGK4oaa1uwvLIMROflBGvIL', {action: 'submit'}).then(function(token) {
+            grecaptcha.execute('YOUR_SITE_KEY', {action: 'submit'}).then(function(token) {
                 // 发送 token 到 Cloudflare Workers 进行验证
                 fetch('https://recaptchafunctions.itman-terminal.workers.dev/verify', {
                     method: 'POST',
@@ -33,6 +65,10 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                })
+                .finally(() => {
+                    // 隐藏加载动画
+                    document.getElementById('loadingSpinner').style.display = 'none';
                 });
             });
         });
