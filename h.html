@@ -18,7 +18,7 @@
 </head>
 <body>
     <h1>reCAPTCHA v3 Demo</h1>
-    <button id="getScoreButton">获取 reCAPTCHA 得分</button>
+    <button id="getScoreButton">Get reCAPTCHA Score</button>
     <div id="scoreDisplay"></div> <!-- 用于显示得分 -->
     <div id="loadingSpinner">
         <svg version="1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
@@ -64,7 +64,7 @@
                 .then(response => response.json())
                 .then(data => {
                     // 显示得分
-                    document.getElementById('scoreDisplay').innerText = '得分: ' + data.score;
+                    document.getElementById('scoreDisplay').innerText = 'Score: ' + data.score;
                 })
                 .catch(error => {
                     console.error('Error:', error);
